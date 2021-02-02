@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img alt="Brand" src="~/Content/Image/Amazon (2).jpg" height="60" width="300" /></a>
+        <div class="form-inline my-2 my-lg-0" id="navbarColor02">
+            @using (Html.BeginForm("Search", "Categories", FormMethod.Get))
+            {
+                @Html.TextBox("searching", null, new { @class = "form-control", autocomplete = "off" })
+                <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="search" />
+            }
+        </div>
+        <div class="navbar-collapse collapse" style="padding-left:450px">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <nav class="navbar navbar-fixed-bottom navbar-expand-lg bg-dark">
+        <form class="form-inline my-2 my-lg-0" style="padding-top:50px">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li style="padding-left:450px">@Html.ActionLink("Home", "Index", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("AddProduct", "Create", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Mobiles", "DisplayMobiles", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Laptops", "DisplayLaptops", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Furniture", "DisplayFurniture", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Beauty", "DisplayBeauty", "Categories", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </form>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ECommerceProject.Models.Product>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+@using (Html.BeginForm("Search", "Categories", FormMethod.Get))
+{
+    <div class="text-center">
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="card m-2" style="width:18rem">
+                    <div class="card-header">@product.ProductName</div>
+                    <img src="@Url.Content(product.ImagePath)" class="card-img-top" width="250" height="250" />
+                    <div class="m-3">
+                        <p class="float-left">Quantity: @product.Quantity</p>
+                        <p class="float-left">@product.Description</p>
+                        <p class="float-left">
+                            @string.Format("{0:C}", product.Price)
+                        </p>
+                        <a href="#" class="btn btn-sm btn-success float-md-none">Buy Now</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

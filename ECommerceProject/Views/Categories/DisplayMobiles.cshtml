@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ECommerceProject.Models.Mobile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Mobiles</h1>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="card m-2" style="width:16rem">
+                <div class="card-header">@product.ProductName</div>
+                <img src="@Url.Content(product.ImagePath)" class="card-img-top" width="250" height="250" />
+                <div class="m-3">
+                    <p class="float-left">Quantity: @product.Quantity</p>
+                    <p><a>@Html.ActionLink("Buy Now", "Buy", "Categories", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success float-md-none" })</a></p>
+                    <p style="text-align:center">@product.Description</p>
+                    <h2>
+                        @string.Format("{0:C}", product.Price)
+                    </h2>
+                </div>
+            </div>
+        }
+    </div>
+</div>   
